@@ -8,7 +8,7 @@
 #                       fileEncoding = "Windows-1250"))
 # }
 uvoziFilme <- function() {
-  return (read.csv2(file="podatki/podatki.csv", header=TRUE, sep=";"))
+  return (read.csv2(file="podatki/filmi.csv", header=TRUE, sep=";", row.names=1))
 }
 
 # Zapišimo podatke v razpredelnico filmov.
