@@ -3,21 +3,50 @@
 \usepackage[slovene]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{breakurl}
 
 \pagestyle{plain}
 
 \begin{document}
 \title{Poročilo pri predmetu \\
 Analiza podatkov s programom R}
-\author{Študent FMF}
+\author{Tatijana Slijepčević}
 \maketitle
 
 \section{Izbira teme}
+Naslov mojega projekta se glasi Lestvica 100 najboljših filmov vseh časov. Uporabila bom lestvico filmov, ki jo je naredil uporabnik spletne strani IMDb (povezava: 
+\url http://www.imdb.com/list/ls055592025/), saj je poleg ocene filmov upošteval še njihovo priljubljenost ter število nominacij in nagrad.
+
+Filme bom med seboj primerjala po:
+\begin{itemize}
+\item zvrsti,
+\item letu nastanka,
+\item številu nominacij,
+\item številu nagrad,
+\item oceni filma, 
+\item državah, kje je bil posamezen film v večini posnet
+\end{itemize}
+
+Zajela bom nominacije, ki so jih podelile organizacije oz. akademije The Oscars, The British Academy of Film and Television Arts (BAFTA) in The Golden Globe Award, ker so le-te najprestižnejše in najstarejše.  
+
+Cilj projekta je ugotovitev:
+- povprečne ocene filmov,
+- v katerem desetljetju je nastalo največ filmov z lestvice,
+- kateri žanr prevladuje,
+- koliko filmov je prejelo eno izmed nagrad. 
 
 \section{Obdelava, uvoz in čiščenje podatkov}
+Uvozila sem tabelo, ki sem jo ročno naredila, ker druge možnosti ni bilo. Po uvozu sem se lotila risanja grafov. Poleg zemljevida sveta sem naredila še tri grafe. Prva dva sta stolpična diagrama, poimenovana stolpicni1 in stolpicni2, tretji pa je tortni diagram, poimenovan tortni. V prvem in tretjem grafu sem filme primerjala na podlagi držav, kjer so bili posneti, v drugem pa po žanru.
+
+\includepdf{../slike/stolpicni1.pdf}
+\includepdf{../slike/stolpicni2.pdf}
+\includepdf{../slike/tortni.pdf}
 
 \section{Analiza in vizualizacija podatkov}
 
+V tretji fazi sem naredila zemljevid sveta, na katerem so prikazana števila filmov posnetih v posamezni državi.
 \includegraphics{../slike/povprecna_druzina.pdf}
 
 \section{Napredna analiza podatkov}
