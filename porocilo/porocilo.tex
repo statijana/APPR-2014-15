@@ -1,11 +1,11 @@
 \documentclass[11pt,a4paper]{article}
-
 \usepackage[slovene]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{pdfpages}
 \usepackage{breakurl}
+\usepackage{float}
 
 \pagestyle{plain}
 
@@ -16,10 +16,10 @@ Analiza podatkov s programom R}
 \maketitle
 
 \section{Izbira teme}
-Naslov mojega projekta se glasi Lestvica 100 najboljših filmov vseh časov. Uporabila bom lestvico filmov, ki jo je naredil uporabnik spletne strani IMDb (povezava: 
+Naslov mojega projekta se glasi Lestvica 100 najboljših filmov vseh časov. Uporabila sem lestvico filmov, ki jo je naredil uporabnik spletne strani IMDb (povezava: 
 \url http://www.imdb.com/list/ls055592025/), saj je poleg ocene filmov upošteval še njihovo priljubljenost ter število nominacij in nagrad.
 
-Filme bom med seboj primerjala po:
+Filme sem med seboj primerjala po:
 \begin{itemize}
 \item zvrsti,
 \item letu nastanka,
@@ -29,28 +29,58 @@ Filme bom med seboj primerjala po:
 \item državah, kje je bil posamezen film v večini posnet
 \end{itemize}
 
+\null
 Zajela bom nominacije, ki so jih podelile organizacije oz. akademije The Oscars, The British Academy of Film and Television Arts (BAFTA) in The Golden Globe Award, ker so le-te najprestižnejše in najstarejše.  
 
+\null
+\null
 Cilj projekta je ugotovitev:
-- povprečne ocene filmov,
-- v katerem desetljetju je nastalo največ filmov z lestvice,
-- kateri žanr prevladuje,
-- koliko filmov je prejelo eno izmed nagrad. 
+\begin{itemize}
+\item povprečne ocene filmov,
+\item v katerem desetljetju je nastalo največ filmov z lestvice,
+\item kateri žanr prevladuje,
+\item koliko filmov je prejelo vsaj eno izmed nagrad.
+\end{itemize}
 
 \section{Obdelava, uvoz in čiščenje podatkov}
-Uvozila sem tabelo, ki sem jo ročno naredila, ker druge možnosti ni bilo. Po uvozu sem se lotila risanja grafov. Poleg zemljevida sveta sem naredila še tri grafe. Prva dva sta stolpična diagrama, poimenovana stolpicni1 in stolpicni2, tretji pa je tortni diagram, poimenovan tortni. V prvem in tretjem grafu sem filme primerjala na podlagi držav, kjer so bili posneti, v drugem pa po žanru.
+Tabelo s podatki sem ročno naredila, ker druge možnosti ni bilo. Le-to sem kasneje uvozila v csv obliki. Po uvozu sem naredila 6 grafov, 4 stolpične diagrame in 2 tortna diagrama, filme pa sem preko teh primarjala na naslednji način:
+\begin{itemize}
+\item v prvem stolpičnem in drugem tortnem sem filme primerjala na podlagi držav, kjer so bili posneti,
+\item v drugem stolpičnem po žanru,
+\item v tretjem stolpičnem po oceni filmov,
+\item v četrtem stolpičnem po letnicah nastanka,
+\item v prvem tortnem pa koliko filmov je prejelo vsaj eno nagrado.
+\end{itemize}
 
+\null
+\null
+S pomočjo obdelave podatkov sem ugotovila naslednje:
+\begin{itemize}
+\item največ filmov je bilo posnetih v ZDA,
+\item med žanri prevladuje drama,
+\item med filmi je največ takšnih, ki imajo oceno med 8.0 in 8.5,
+\item največ filmov je nastalo med letoma 1950 in 1960,
+\item malo več kot desetina filmov ni prejela nobene nagrade.
+\end{itemize}
+
+ 
 \includepdf{../slike/stolpicni1.pdf}
 \includepdf{../slike/stolpicni2.pdf}
-\includepdf{../slike/tortni.pdf}
+\includepdf{../slike/stolpicni3.pdf}
+\includepdf{../slike/stolpicni4.pdf}
+\includepdf{../slike/tortni1.pdf}
+\includepdf{../slike/tortni2.pdf}
 
 \section{Analiza in vizualizacija podatkov}
 
 V tretji fazi sem naredila zemljevid sveta, na katerem so prikazana števila filmov posnetih v posamezni državi.
-\includegraphics{../slike/povprecna_druzina.pdf}
 
-\section{Napredna analiza podatkov}
+\begin{figure}[H]
+\includepdf[scale=0.6]{../slike/zemljevid.pdf}
+\end{figure}
 
-\includegraphics{../slike/naselja.pdf}
+%\section{Napredna analiza podatkov}
+
+%\includegraphics{../slike/naselja.pdf}
 
 \end{document}
