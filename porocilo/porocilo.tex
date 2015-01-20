@@ -1,11 +1,11 @@
 \documentclass[11pt,a4paper]{article}
-
 \usepackage[slovene]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{pdfpages}
 \usepackage{breakurl}
+\usepackage{float}
 
 \pagestyle{plain}
 
@@ -32,10 +32,12 @@ Filme bom med seboj primerjala po:
 Zajela bom nominacije, ki so jih podelile organizacije oz. akademije The Oscars, The British Academy of Film and Television Arts (BAFTA) in The Golden Globe Award, ker so le-te najprestižnejše in najstarejše.  
 
 Cilj projekta je ugotovitev:
-- povprečne ocene filmov,
-- v katerem desetljetju je nastalo največ filmov z lestvice,
-- kateri žanr prevladuje,
-- koliko filmov je prejelo eno izmed nagrad. 
+\begin{itemize}
+\item povprečne ocene filmov,
+\item v katerem desetljetju je nastalo največ filmov z lestvice,
+\item kateri žanr prevladuje,
+\item koliko filmov je prejelo eno izmed nagrad. 
+\end{itemize}
 
 \section{Obdelava, uvoz in čiščenje podatkov}
 Uvozila sem tabelo, ki sem jo ročno naredila, ker druge možnosti ni bilo. Po uvozu sem se lotila risanja grafov. Poleg zemljevida sveta sem naredila še tri grafe. Prva dva sta stolpična diagrama, poimenovana stolpicni1 in stolpicni2, tretji pa je tortni diagram, poimenovan tortni. V prvem in tretjem grafu sem filme primerjala na podlagi držav, kjer so bili posneti, v drugem pa po žanru.
@@ -47,10 +49,13 @@ Uvozila sem tabelo, ki sem jo ročno naredila, ker druge možnosti ni bilo. Po u
 \section{Analiza in vizualizacija podatkov}
 
 V tretji fazi sem naredila zemljevid sveta, na katerem so prikazana števila filmov posnetih v posamezni državi.
-\includegraphics{../slike/povprecna_druzina.pdf}
 
-\section{Napredna analiza podatkov}
+\begin{figure}[H]
+\includepdf[scale=0.6]{../slike/zemljevid.pdf}
+\end{figure}
 
-\includegraphics{../slike/naselja.pdf}
+%\section{Napredna analiza podatkov}
+
+%\includegraphics{../slike/naselja.pdf}
 
 \end{document}

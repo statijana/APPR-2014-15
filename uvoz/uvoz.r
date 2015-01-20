@@ -1,12 +1,12 @@
 # 2. faza: Uvoz podatkov
 
 # Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvoziDruzine <- function() {
-  return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
-                      row.names = 1,
-                      col.names = c("obcina", "en", "dva", "tri", "stiri"),
-                      fileEncoding = "Windows-1250",
-                      row.names=1))
+# uvoziDruzine <- function() {
+#   return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
+#                       row.names = 1,
+#                       col.names = c("obcina", "en", "dva", "tri", "stiri"),
+#                       fileEncoding = "Windows-1250",
+#                       row.names=1))
 
 # Funkcija, ki uvozi podatke iz datoteke podatki.csv
 #uvoziFilme <- function() {
