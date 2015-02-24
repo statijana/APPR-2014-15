@@ -19,9 +19,38 @@ uvoziFilme <- function() {
   return (read.csv2(file="podatki/filmi.csv", header=TRUE, sep=";", row.names=1))
 }
 
+uvoziFilme <- function() {
+  return (read.csv2(file="podatki/filmi.csv", header=TRUE, sep=";", row.names=1))
+}
+
+uvoziTop10 <- function() {
+  return (read.csv2(file="podatki/top100-10.csv", header=TRUE, sep=";", row.names=1))
+}
+
+uvoziTop11 <- function() {
+  return (read.csv2(file="podatki/top100-11.csv", header=TRUE, sep=";", row.names=1))
+}
+
+uvoziTop12 <- function() {
+  return (read.csv2(file="podatki/top100-12.csv", header=TRUE, sep=";", row.names=1))
+}
+
+uvoziTop13 <- function() {
+  return (read.csv2(file="podatki/top100-13.csv", header=TRUE, sep=";", row.names=1))
+}
+
+uvoziTop14 <- function() {
+  return (read.csv2(file="podatki/top100-14.csv", header=TRUE, sep=";", row.names=1))
+}
+
 # Zapišimo podatke v razpredelnico filmov.
 cat("Uvažam podatke o filmih...\n")
 filmi <- uvoziFilme()
+top10 <- uvoziTop10()
+top11 <- uvoziTop11()
+top12 <- uvoziTop12()
+top13 <- uvoziTop13()
+top14 <- uvoziTop14()
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo

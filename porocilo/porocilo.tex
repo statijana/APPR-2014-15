@@ -15,6 +15,7 @@ Analiza podatkov s programom R}
 \author{Tatijana Slijepčević}
 \maketitle
 
+\pagebreak
 \section{Izbira teme}
 Naslov mojega projekta se glasi Lestvica 100 najboljših filmov vseh časov. Uporabila sem lestvico filmov, ki jo je naredil uporabnik spletne strani IMDb (povezava: 
 \url http://www.imdb.com/list/ls055592025/), saj je poleg ocene filmov upošteval še njihovo priljubljenost ter število nominacij in nagrad.
@@ -42,6 +43,7 @@ Cilj projekta je ugotovitev:
 \item koliko filmov je prejelo vsaj eno izmed nagrad.
 \end{itemize}
 
+\pagebreak
 \section{Obdelava, uvoz in čiščenje podatkov}
 Tabelo s podatki sem ročno naredila, ker druge možnosti ni bilo. Le-to sem kasneje uvozila v csv obliki. Po uvozu sem naredila 6 grafov, 4 stolpične diagrame in 2 tortna diagrama, filme pa sem preko teh primarjala na naslednji način:
 \begin{itemize}
@@ -79,8 +81,26 @@ V tretji fazi sem naredila zemljevid sveta, na katerem so prikazana števila fil
 \includepdf[scale=0.6]{../slike/zemljevid.pdf}
 \end{figure}
 
-%\section{Napredna analiza podatkov}
+\pagebreak
+\section{Napredna analiza podatkov}
+ 
+V četrti fazi sem tako kot predhodno v Excelu ročno naredila tabele sto najboljših filmov v letih 2010, 2011, 2012, 2013 in 2014 (za vsako leto posebaj) in jih nato uvozila v csv obliki pod imeni top100-10, top100-11, top100-12, top100-13 in top100-14. Najprej sem za vsako tabelo ločeno naredila stolpični diagram, ki prikazuje distribucijo žanrov; datoteke z imeni: stolpicni10, stolpicni11, stolpicni12, stolpicni13, stolpicni14. Nato sem za vsako leto naredila zemljevid, ki prikazuje število filmov posnetih v posamezni državi; datoteke z imeni: zemljevid10, zemljevid11, zemljevid12, zemljevid13, zemljevid14.
+Stari tabeli podatkov (filmi.csv) sem dodala stolpca BUDGET in BOX OFFICE. Nato sem za vsako tabelo posebaj izračunala minimalni in maksimalni propračun in zaslužek. Minimalnim zaslužkom, maksimalnim zaslužkom, minimalnim proračunom in maksimalnim proračunom sem priredila stolpične diagrame po letnicah; datoteke z imeni: min-box-office, max-box-officem, min-budget in max-budget. Izračunala sem še razmerje med maksimalnim in minimalnim (max/min) proračunom in zaslužkom po letnicah ter priredila stolpična diagrama pod imeni razmerje-boxoffice in razmerje-budget.
 
-%\includegraphics{../slike/naselja.pdf}
+\includepdf{../slike/stolpicni10.pdf}
+\includepdf{../slike/stolpicni11.pdf}
+\includepdf{../slike/stolpicni12.pdf}
+\includepdf{../slike/stolpicni13.pdf}
+\includepdf{../slike/stolpicni14.pdf}
+
+\includepdf{../slike/min-box-office.pdf}
+\includepdf{../slike/max-box-office.pdf}
+\includepdf{../slike/min-budget.pdf}
+\includepdf{../slike/max-budget.pdf}
+
+\includepdf{../slike/razmerje-boxoffice.pdf}
+\includepdf{../slike/razmerje-budget.pdf}
 
 \end{document}
+
+

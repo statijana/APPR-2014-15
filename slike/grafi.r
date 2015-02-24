@@ -51,10 +51,10 @@ dev.off()
 #                 "western")
 
 #2.način:
-zanr.imena <- colnames(filmi)[7:26]
-zanr.vrednosti <- apply(filmi[zanr.imena], 2, sum)
+zanr.imena <- colnames(filmi)[7:26] #v oglatih oklepajih je inerval stolpcev - za eno manj na obeh straneh
+zanr.vrednosti <- apply(filmi[zanr.imena], 2, sum) #2 pomeni da so na x osi obrnjeni navpično, na y osi vodoravno
 pdf("slike/stolpicni2.pdf",paper="a4")
-barplot(zanr.vrednosti, names.arg = zanr.imena, xlab="ZANRI", ylab="STEVILO FILMOV", main="DISTRIBUCIJA ZANROV", las=2, cex.names=0.75, col="blue")
+barplot(zanr.vrednosti, names.arg = zanr.imena, xlab="ZANRI", ylab="STEVILO FILMOV", main="DISTRIBUCIJA ZANROV", las=2, cex.names=0.5, col="blue")
 dev.off()
 
 #stolpični diagram3
