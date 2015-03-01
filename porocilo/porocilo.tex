@@ -6,53 +6,79 @@
 \usepackage{pdfpages}
 \usepackage{breakurl}
 \usepackage{float}
+\usepackage{animate}
 
 \pagestyle{plain}
 
 \begin{document}
-\title{Poročilo pri predmetu \\
-Analiza podatkov s programom R}
-\author{Tatijana Slijepčević}
-\maketitle
 
-\pagebreak
-\section{Izbira teme}
-Naslov mojega projekta se glasi Lestvica 100 najboljših filmov vseh časov. Uporabila sem lestvico filmov, ki jo je naredil uporabnik spletne strani IMDb (povezava: 
-\url http://www.imdb.com/list/ls055592025/), saj je poleg ocene filmov upošteval še njihovo priljubljenost ter število nominacij in nagrad.
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
+\center
 
+\textsc{\LARGE Fakulteta za matematiko in fiziko}\\[3.5cm]
+\textsc{\Large Poročilo pri predmetu} \\[0.5cm]
+\textsc{Analiza podatkov s programom R}\\[2cm]
+
+{\huge\bfseries 100 najboljših filmov vseh časov}\\[0.1cm]
+\HRule \\[5cm]
+
+\begin{minipage}{0.3\textwidth}
+\begin{flushleft}\large
+\emph{AVTOR:}\\
+Tatijana Slijepčević
+\end{flushleft}
+\end{minipage}
+~~~~~~
+\begin{minipage}{0.3\textwidth}
+\begin{flushleft}\large
+\emph{MENTOR:}\\
+Dr. Janoš Vidali
+\end{flushleft}
+\end{minipage}
+
+\end{titlepage}
+
+
+\section{IZBIRA TEME}
+\paragraph{} Naslov mojega projekta se glasi 100 najboljših filmov vseh časov. Podatke, na katerih bo temeljil projekt, sem vzela s spletne strani IMDb (povezava: 
+\url http://www.imdb.com/list/ls055592025/). Gre za lestvico filmov, ki jo je naredil uporabnik te spletne strani, a se mi zdi precej reprezentativna, saj je avtor lestvice poleg ocene filmov upošteval še njihovo priljubljenost ter število nominacij in nagrad. Med vsemi organizacijami oz. akademijami, ki podeljujejo nagrade, sem se pri obdelavi podatkov upoštevala nominacije s strani The Oscars, The British Academy of Film and Television Arts (BAFTA) in The Golden Globe Award, ker so le-te najprestižnejše in najstarejše.
+
+\null
+Tabela s podatki je sestavljeni iz naslednjih stolpcev: \verb|NASLOVI FILMOV|, \verb|OCENA|, \verb|LETNICA NASTANKA|, \verb|ZANRI|, \verb|STEVILO NOMINACIJ|, \verb|STEVILO NAGRAD| in \verb|KRAJ|.
+
+\null
 Filme sem med seboj primerjala po:
 \begin{itemize}
-\item zvrsti,
-\item letu nastanka,
-\item številu nominacij,
-\item številu nagrad,
-\item oceni filma, 
-\item državah, kje je bil posamezen film v večini posnet
+\item oceni filmov (urejenostna spremenljivka, kjer sem filme razdelila v 5 razredov, vsak razred pa predstavlja pol ocene, saj imajo vsi filmi oceno nad 7.0) 
+\item letnici nastanka (urejenostna spremenljivka, kjer sem filme razdelila v 8 razredov, vsak razred pa predstavlja 10 let)
+\item žanru (imenska spremenljivka),
+\item številu nagrad (številska spremenljivka, kjer me zanima ali je film prejel vsaj eno nagrado ali ne)
+\item državah, kje je bil posamezen film v večini posnet(imenska spremenljivka).
 \end{itemize}
 
 \null
-Zajela bom nominacije, ki so jih podelile organizacije oz. akademije The Oscars, The British Academy of Film and Television Arts (BAFTA) in The Golden Globe Award, ker so le-te najprestižnejše in najstarejše.  
-
-\null
-\null
-Cilj projekta je ugotovitev:
+Cilj projekta je:
 \begin{itemize}
-\item povprečne ocene filmov,
-\item v katerem desetljetju je nastalo največ filmov z lestvice,
-\item kateri žanr prevladuje,
-\item koliko filmov je prejelo vsaj eno izmed nagrad.
+\item Iz začetne tabele ugotoviti povprečno oceno filmov,v katerem desetljetju je nastalo največ filmov,kateri žanr prevladuje, koliko filmov je prejelo vsaj eno izmed nagrad in kje je bilo posnetih največ filmov.
+\item S pomočjo novih podatkov, uvoženih v kasnejši fazi,ugotoviti, kateri žanr prevladuje v zadnjih letih, kje so v večini posneti filmi iz preteklih let ter nameniti pozornost proračunu in zaslužku filmov. 
 \end{itemize}
+
+\null
+Namen projekta je preko izbrane teme spoznati program R s pomočjo različnih orodij. V ospredju bodo uvoz in čiščenje podatkov, risanje grafov in zemljevidov, na koncu pa bo sledila še analiza in iterpretacija podatkov.
 
 \pagebreak
-\section{Obdelava, uvoz in čiščenje podatkov}
-Tabelo s podatki sem ročno naredila, ker druge možnosti ni bilo. Le-to sem kasneje uvozila v csv obliki. Po uvozu sem naredila 6 grafov, 4 stolpične diagrame in 2 tortna diagrama, filme pa sem preko teh primarjala na naslednji način:
+\section{OBDELAVA, UVOZ IN ČIŠČENJE PODATKOV}
+\paragraph{} Tabelo s podatki sem ročno naredila s pomočjo programa Microsoft Office Excel, ker so bili podatki na spletni strani zapisani v obliki seznama in ne v obliki tabele. Le-to sem kasneje uvozila v csv obliki pod imenom \verb|filmi.csv|. Po uvozu sem naredila 6 grafov, med njimi 4 stolpične diagrame in 2 tortna diagrama, preko katerih sem filme med seboj primerjala na naslednje načine:
 \begin{itemize}
-\item v prvem stolpičnem in drugem tortnem sem filme primerjala na podlagi držav, kjer so bili posneti,
-\item v drugem stolpičnem po žanru,
-\item v tretjem stolpičnem po oceni filmov,
-\item v četrtem stolpičnem po letnicah nastanka,
-\item v prvem tortnem pa koliko filmov je prejelo vsaj eno nagrado.
+\item v prvem stolpičnem in drugem tortnem diagramu sem filme primerjala na podlagi držav, kjer so bili posneti,
+\item v drugem stolpičnem diagramu po žanru,
+\item v tretjem stolpičnem diagramu po oceni filmov,
+\item v četrtem stolpičnem diagramu po letnicah nastanka,
+\item v prvem tortnem diagramu pa koliko filmov je prejelo vsaj eno nagrado.
 \end{itemize}
+
+\paragraph{} Grafi so po vrsti shranjeni pod imeni: \verb|stolpicni1.pdf|, \verb|stolpicni2.pdf|, \verb|stolpicni3.pdf|, \verb|stolpicni4.pdf|, \verb|tortni1.pdf| in \verb|tortni2.pdf|.
 
 \null
 \null
@@ -65,41 +91,146 @@ S pomočjo obdelave podatkov sem ugotovila naslednje:
 \item malo več kot desetina filmov ni prejela nobene nagrade.
 \end{itemize}
 
- 
-\includepdf{../slike/stolpicni1.pdf}
-\includepdf{../slike/stolpicni2.pdf}
-\includepdf{../slike/stolpicni3.pdf}
-\includepdf{../slike/stolpicni4.pdf}
-\includepdf{../slike/tortni1.pdf}
-\includepdf{../slike/tortni2.pdf}
-
-\section{Analiza in vizualizacija podatkov}
-
-V tretji fazi sem naredila zemljevid sveta, na katerem so prikazana števila filmov posnetih v posamezni državi.
-
+\pagebreak
 \begin{figure}[H]
-\includepdf[scale=0.6]{../slike/zemljevid.pdf}
+\includepdf[width=1.2\textwidth]{../slike/stolpicni1.pdf}
+\caption{Velika večina filmov je bila posnetih v Združenih državah Amerike, na drugem in tretjem mestu po številu posnetih filmov pa sta Anglija in Kanada.}
 \end{figure}
 
 \pagebreak
-\section{Napredna analiza podatkov}
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni2.pdf}
+\caption{Med žanri močno prevladuje drama, na drugem in tretjem pa romantični film in kriminalni film.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni3.pdf}
+\caption{Glede na ocene je največ filmov, ki imajo oceno med 8.0 in 8.5, najmanj pa tistih z oceno nad 9.0. Vsi filmi imajo oceno večjo ali enako 7.2.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni4.pdf}
+\caption{Med najboljšimi filmi vseh časov jih je največ nastalo med letoma 1950 in 1960, najmanj pa med leto 2000 in 2010.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/tortni1.pdf}
+\caption{Velika večina filmov je prejela vsaj eno nagrado oz. dobra desetina filmov ni prejela nobene nagrade.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/tortni2.pdf}
+\caption{Države so razporejene po številu filmov posnetih v posamezni državi. Največji del pripada Združenim državam Amerike, kjer je tudi posnetih največ filmov.}
+\end{figure}
+
+\pagebreak
+\section{ANALIZA IN VIZUALIZACIJA PODATKOV}
+
+\paragraph{} V tretji fazi projekta sem naredila zemljevid sveta, na katerem so obarvane države, kjer je bil posnet vsaj en film, poleg tega pa nam barva, s katero je država obarvana, pove, koliko filmov je bilo posnetih v vsaki posebej. Vidimo, da vijolična barva predstavlja državo, kjer je bilo posnetih največ filmov in to kar  triinsedemdeset. Rdeča barva pa predstavlja države, kjer je bilo posnetih najmanj filmov, natančneje samo en film. Meje držav sem obarvala z oranžno barvo z namenom boljše preglednosti. Prav tako sem tudi morje obarvala v blago oranžno barvo zaradi boljšega ujemanja z barvo meja in boljšega videza. Z zemljevida sem odstranila Antarktiko prav tako z namenom boljšega videza. Imena držav sem s pomočjo spremembe koordinat ustrezno prilagodila vsaki državi posebaj. Na koncu pa sem sliko zemljevida sem shranila v datoteko \verb|zemljevid.pdf|.
+
+
+\includepdf[scale=1]{../slike/zemljevid.pdf}
+
+
+\pagebreak
+\section{NAPREDNA ANALIZA PODATKOV}
  
-V četrti fazi sem tako kot predhodno v Excelu ročno naredila tabele sto najboljših filmov v letih 2010, 2011, 2012, 2013 in 2014 (za vsako leto posebaj) in jih nato uvozila v csv obliki pod imeni top100-10, top100-11, top100-12, top100-13 in top100-14. Najprej sem za vsako tabelo ločeno naredila stolpični diagram, ki prikazuje distribucijo žanrov; datoteke z imeni: stolpicni10, stolpicni11, stolpicni12, stolpicni13, stolpicni14. Nato sem za vsako leto naredila zemljevid, ki prikazuje število filmov posnetih v posamezni državi; datoteke z imeni: zemljevid10, zemljevid11, zemljevid12, zemljevid13, zemljevid14.
-Stari tabeli podatkov (filmi.csv) sem dodala stolpca BUDGET in BOX OFFICE. Nato sem za vsako tabelo posebaj izračunala minimalni in maksimalni propračun in zaslužek. Minimalnim zaslužkom, maksimalnim zaslužkom, minimalnim proračunom in maksimalnim proračunom sem priredila stolpične diagrame po letnicah; datoteke z imeni: min-box-office, max-box-officem, min-budget in max-budget. Izračunala sem še razmerje med maksimalnim in minimalnim (max/min) proračunom in zaslužkom po letnicah ter priredila stolpična diagrama pod imeni razmerje-boxoffice in razmerje-budget.
+\paragraph{} V četrti fazi sem, tako kot predhodno, v Microsoft Office Excelu ročno naredila tabele sto najboljših filmov v letih 2010, 2011, 2012, 2013 in 2014, za vsako leto posebaj. V vsaki tabeli so stolpci z imeni: \verb|NASLOVI FILMOV|, \verb|ZANR|, \verb|BUDGET|, \verb|BOX OFFICE| ter \verb|KRAJ|. Tabele sem uvozila v csv obliki pod imeni \verb|top100-10.csv|, \verb|top100-11.csv|, \verb|top100-12.csv|, \verb|top100-13.csv| in \verb|top100-14.csv|. Najprej sem za vsako tabelo ločeno naredila stolpični diagram, ki prikazuje distribucijo žanrov; datoteke z imeni: \verb|stolpicni10.pdf|, \verb|stolpicni11.pdf|, \verb|stolpicni12.pdf|, \verb|stolpicni13.pdf| in \verb|stolpicni14.pdf|. Nato sem za vsako leto naredila zemljevid, ki prikazuje število filmov posnetih v posamezni državi; datoteke z imeni: \verb|zemljevid10.pdf|, \verb|zemljevid11.pdf|, \verb|zemljevid12.pdf|, \verb|zemljevid13.pdf| in \verb|zemljevid14.pdf|.
+Stari tabeli podatkov \verb|filmi.csv| sem dodala stolpca \verb|BUDGET| in \verb|BOX OFFICE|. Kasneje sem za vsako tabelo posebej izračunala minimalni in maksimalni proračun in zaslužek. Minimalnim zaslužkom, maksimalnim zaslužkom, minimalnim proračunom in maksimalnim proračunom sem priredila stolpične diagrame po letnicah; datoteke z imeni: \verb|min-box-office.pdf|, \verb|max-box-officem.pdf|, \verb|min-budget.pdf| in \verb|max-budget.pdf|. Izračunala sem še razmerje med maksimalnim in minimalnim (max/min)  proračunom in zaslužkom po letnicah ter priredila stolpična diagrama z imeni \verb|razmerje-boxoffice.pdf| in \\ \verb|razmerje-budget.pdf|. Za konec sem iz novih zemljevidov naredila animacijo, ki prikazuje, kako se je v zadnjih petih letih spreminjala lokacija snemanja 100 najboljših filmov.
 
-\includepdf{../slike/stolpicni10.pdf}
-\includepdf{../slike/stolpicni11.pdf}
-\includepdf{../slike/stolpicni12.pdf}
-\includepdf{../slike/stolpicni13.pdf}
-\includepdf{../slike/stolpicni14.pdf}
+\paragraph{}Potrebno je omeniti, da pri nekaterih filmih ni bilo možno najti podatka o proračunu ali zaslužku, zato sem v tabeli v takšnem primeru navedla 0. Poleg tega so podatki o proračunu in zaslužku navedeni v ameriških dolarjih.
 
-\includepdf{../slike/min-box-office.pdf}
-\includepdf{../slike/max-box-office.pdf}
-\includepdf{../slike/min-budget.pdf}
-\includepdf{../slike/max-budget.pdf}
+\paragraph{}S pomočjo obdelave podatkov sem ugotovila naslednje:
+\begin{itemize}
+\item V zadnjih petih letih so med žanri prevladovali drama, komedija in akcijski film.
+\item Če primerjamo vse tabele, torej tabelo za filme vseh časov in tabele zadnjih petih let, je bil najmanjši minimalni zaslužek v letu 2014, največji minimalni zaslužek pa v letu 2011. Tu je potrebno opozoriti, da se je leto 2014 nedavno izteklo, nekateri filmi so bili prvič predvajani konec leta, zato njihov zaslužek verjetno ni dokončen.
+\item Če primerjamo vse tabele, je najmanjši maksimalni zaslužek bil v letu 2010, največji maksimalni zaslužek pa v tabeli filmom vseh časov.
+\item Če primerjamo vse tabele, je najmanjši minimalni proračun bil v letu 2011, največji minimalni proračun je bil v 2013, torej lahko povemo, da je bil najcenejši film posnet v letu 2011.
+\item Če primerjamo vse tabele, je najmanjši maksimalni proračun bil v tabeli filmov vseh časov, največji maksimalni proračun pa je bil v letu 2013, torej lahko povemo, da je bil najdražji film posnet v letu 2013.
+\item Največje razmerje med maksimalnim in minimalnim zaslužkom je bilo v letu 2014, to pomeni, da je bila v tem letu največja razlika med filmoma z največjim in najmanjšim zaslužkom.
+\item Največje razmerje med maksimalnim in minimalnim proračunom je bilo v letu 2011, to pomeni, da je bila v tem letu največja razlika emd filmoma z največjim in najmanjišim proračunom.
+\item Število filmov posnetih v Združenih državah Amerike je še vedno ogromno, a lahko iz zemljevidov preteklih let povemo, da se to število počasi zmanjšuje. To je verjetno posledica tega, da se filmi iz Združenih držav Amerike veliko več snemajo v izven njihov meja kot so se nekdaj. Poleg tega se filmografija iz leta v leto izboljšuje ne samo v Združenih državah Amerike, vendar tudi drugod po svetu. 
+\end{itemize}
 
-\includepdf{../slike/razmerje-boxoffice.pdf}
-\includepdf{../slike/razmerje-budget.pdf}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni10.pdf}
+\caption{V letu 2010 je med žanri prevladovala drama, sledita ji komedija in akcijski film.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni11.pdf}
+\caption{V letu 2011 je med žanri prevladovala drama, sledita ji komedija in akcijski film.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni12.pdf}
+\caption{V letu 2012 je med žanri prevladovala drama, sledita ji komedija in akcijski film.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni13.pdf}
+\caption{V letu 2013 je med žanri prevladovala drama, sledita ji akcijski film in komedija.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/stolpicni14.pdf}
+\caption{V letu 2014 je med žanri prevladovala drama, sledita ji komedija in akcijski film.}
+\end{figure}
+
+
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/min-box-office.pdf}
+\caption{Najmanjši minimalni zaslužek je bil v letu 2014, največji minimalni zaslužek pa v letu 2011.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/max-box-office.pdf}
+\caption{Najmanjši maksimalni zaslužek je bil v letu 2010, največji maksimalni zasluzek pa v tabeli filmov vseh časov.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/min-budget.pdf}
+\caption{Najmanjši minimalni proračun je bil v letu 2011, največji minimalni proračun pa je bil v 2013.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/max-budget.pdf}
+\caption{Najmanjši maksimalni proračun je bil v tabeli filmov vseh časov, največji maksimalni proračun pa je bil v letu 2013.}
+\end{figure}
+
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/razmerje-boxoffice.pdf}
+\caption{Največje razmerje med maksimalnim in minimalnim zaslužkom je bilo v letu 2014, sledi leto 2012, preostala razmerja pa so si dokaj blizu.}
+\end{figure}
+
+\pagebreak
+\begin{figure}[H]
+\includepdf[width=1.2\textwidth]{../slike/razmerje-budget.pdf}
+\caption{Največje razmerje med maksimalnim in minimalnim proračunom je bilo v letu 2011, preostala razmerja pa so si dokaj blizu.}
+\end{figure}
+
+\pagebreak
+\begin{center}
+\animategraphics[controls,width=1.2\linewidth]{0.5}{../slike/zemljevid1}{0}{4}
+\end{center}
+
 
 \end{document}
 

@@ -1,3 +1,4 @@
+source("fontconfig.r", encoding = "UTF-8")
 # 2. faza: Obdelava, uvoz in čiščenje podatkov
 source("uvoz/uvoz.r")
 #kličem kasneje, ker potrebujem najprej zemljevid sveta za graf
@@ -8,6 +9,6 @@ source("vizualizacija/vizualizacija.r")
 source("slike/grafi.r", encoding="UTF-8")
 
 # 4. faza: Napredna analiza podatkov
-#source("analiza/analiza.r")
+source("analiza/analiza.r")
 
 cat("Končano.\n")
