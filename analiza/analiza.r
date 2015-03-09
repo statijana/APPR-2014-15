@@ -22,7 +22,8 @@ svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthd
                         "svet", "ne_110m_admin_0_map_units.shp", mapa = "zemljevid",
                         encoding = "Windows-1252")
 svet1 <- svet[svet$continent %in% c("Europe", "Africa", "South America", "North America", "Asia", "Oceania"),]
-
+library(ggplot2)
+library(scales)
 ######top10
 #stolpicni diagram 10
 zanr.imena <- colnames(top10)[5:24]
@@ -76,16 +77,18 @@ text(koordinate, labels=imena.krajev, pos=1, cex=0.4)
 legend("bottomright", title="ŠTEVILO POSNETIH FILMOV V POSAMEZNI DRŽAVI:", bg="white", text.font=10, legend=stevilo, fill=rainbow(length(stevilo)))
 dev.off()
 
-#min/max box office
+#min/max + povprecje box office 
 a <- top10$BOX.OFFICE
 b <- a[a>0] 
 min10 <- min(b)
 max10 <- max(top10$BOX.OFFICE)
-#min/max budget
+povprecje10 <- (sum(as.numeric(top10$BOX.OFFICE)))/100
+#min/max + povprecje budget
 aa <- top10$BUDGET
 bb <- aa[aa>0] 
 minb10 <- min(bb)
 maxb10 <- max(top10$BUDGET)
+povprecjeb10 <- (sum(as.numeric(top10$BUDGET)))/100
 
 
 ######top11
@@ -140,16 +143,18 @@ plot(svet1, col=barve.zemljevid, bg="lightyellow", border="orange", main="ZEMLJE
 text(koordinate, labels=imena.krajev, pos=1, cex=0.4)
 legend("bottomright", title="ŠTEVILO POSNETIH FILMOV V POSAMEZNI DRŽAVI:", bg="white", text.font=10, legend=stevilo, fill=rainbow(length(stevilo)))
 dev.off()
-#min/max box office
+#min/max box + povprecje office
 c <- top11$BOX.OFFICE
 d <- c[c>0] 
 min11 <- min(d)
 max11 <- max(top11$BOX.OFFICE)
-#min/max budget
+povprecje11 <- (sum(as.numeric(top11$BOX.OFFICE)))/100
+#min/max + povprecje budget
 cc <- top11$BUDGET
 dd <- cc[cc>0] 
 minb11 <- min(dd)
 maxb11 <- max(top11$BUDGET)
+povprecjeb11 <- (sum(as.numeric(top11$BUDGET)))/100
 
 
 ######top12
@@ -199,16 +204,18 @@ plot(svet1, col=barve.zemljevid, bg="lightyellow", border="orange", main="ZEMLJE
 text(koordinate, labels=imena.krajev, pos=1, cex=0.4)
 legend("bottomright", title="ŠTEVILO POSNETIH FILMOV V POSAMEZNI DRŽAVI:", bg="white", text.font=10, legend=stevilo, fill=rainbow(length(stevilo)))
 dev.off()
-#min/max box office
+#min/max + povprecje box office
 e <- top12$BOX.OFFICE
 f <- e[e>0] 
 min12 <- min(f)
 max12 <- max(top12$BOX.OFFICE)
-#min/max budget
+povprecje12 <- (sum(as.numeric(top12$BOX.OFFICE)))/100
+#min/max + povprecje budget
 ee <- top12$BUDGET
 ff <- ee[ee>0] 
 minb12 <- min(ff)
 maxb12 <- max(top12$BUDGET)
+povprecjeb12 <- (sum(as.numeric(top12$BUDGET)))/100
 
 
 ######top13
@@ -264,16 +271,18 @@ plot(svet1, col=barve.zemljevid, bg="lightyellow", border="orange", main="ZEMLJE
 text(koordinate, labels=imena.krajev, pos=1, cex=0.4)
 legend("bottomright", title="ŠTEVILO POSNETIH FILMOV V POSAMEZNI DRŽAVI:", bg="white", text.font=10, legend=stevilo, fill=rainbow(length(stevilo)))
 dev.off()
-#min/max box office
+#min/max + povprecje box office
 g <- top13$BOX.OFFICE
 h <- g[g>0] 
 min13 <- min(h)
 max13 <- max(top13$BOX.OFFICE)
-#min/max budget
+povprecje13 <- (sum(as.numeric(top13$BOX.OFFICE)))/100
+#min/max + povprecje budget
 gg <- top13$BUDGET
 hh <- gg[gg>0] 
 minb13 <- min(hh)
 maxb13 <- max(top13$BUDGET)
+povprecjeb13 <- (sum(as.numeric(top13$BUDGET)))/100
 
 
 ######top14
@@ -327,29 +336,33 @@ plot(svet1, col=barve.zemljevid, bg="lightyellow", border="orange", main = "ZEML
 text(koordinate, labels=imena.krajev, pos=1, cex=0.4)
 legend("bottomright", title="ŠTEVILO POSNETIH FILMOV V POSAMEZNI DRŽAVI:", bg="white", , text.font=8, legend=stevilo, fill=rainbow(length(stevilo)))
 dev.off()
-#min/max box office
+#min/max + povprecje box office
 i <- top14$BOX.OFFICE
 j <- i[i>0] 
 min14 <- min(j)
 max14 <- max(top14$BOX.OFFICE)
-#min/max budget
+povprecje14 <- (sum(as.numeric(top14$BOX.OFFICE)))/100
+#min/max + povprecje budget
 ii <- top14$BUDGET
 jj <- ii[ii>0] 
 minb14 <- min(jj)
 maxb14 <- max(top14$BUDGET)
+povprecjeb14 <- (sum(as.numeric(top14$BUDGET)))/100
 
 
 ######filmi (top 100 vseh casov)
-#min/max box office
+#min/max + povprecje box office
 k <- filmi$BOX.OFFICE
 l <- k[k>0] 
 min100 <- min(l)
 max100 <- max(filmi$BOX.OFFICE)
-#min/max budget
+povprecje100 <- (sum(as.numeric(filmi$BOX.OFFICE)))/100
+#min/max + povprecje budget
 kk <- filmi$BUDGET
 ll <- kk[kk>0] 
 minb100 <- min(ll)
 maxb100 <- max(filmi$BUDGET)
+povprecjeb100 <- (sum(as.numeric(filmi$BUDGET)))/100
 
 
 ######skupne primerjave
@@ -374,35 +387,37 @@ rb12 <- (maxb12/minb12)
 rb13 <- (maxb13/minb13)
 rb14 <- (maxb14/minb14)
 ##grafi
-#maximum box officev po letnicah
-letnice.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
-letnice.vrednosti <- c(max100, max10, max11, max12, max13, max14)
-cairo_pdf("slike/max-box-office.pdf",family="Arial")
-barplot(letnice.vrednosti, names.arg = letnice.ime, xlab="LETNICE", ylab="MAKSIMALNI ZASLUŽEK", main="MAKSIMALEN ZASLUŽEK PO LETNICAH", cex.names=0.5, cex.axis=0.5, col=rainbow(6)) #če ni las=2, pomeni, da so na x osi vrednosti obrnjene vodoravno, na y osi pa navpično
+#maximum+minimum+povprecje box officev po letnicah
+Letnice <- c(2010, 2011, 2012, 2013, 2014)
+y1 <- c(max10, max11, max12, max13, max14)
+y2 <- c(min10, min11, min12, min13, min14)
+y3 <- c(povprecje10, povprecje11, povprecje12, povprecje13, povprecje14)
+cairo_pdf("slike/box-office.pdf",family="Arial")
+df <- data.frame(Letnice, y1, y2, y3)
+ggplot(df, aes(Letnice, y = Vrednosti, color = Legenda)) + 
+  geom_line(aes(y = y1, col = "maksimumi")) + 
+  geom_line(aes(y = y2, col = "minimumi")) +
+  geom_line(aes(y = y3, col = "povprečje")) +
+  scale_y_log10(labels = trans_format('log10', math_format(10^.x)))
 dev.off()
-#minimum box officev po letnicah
-letnice.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
-letnice.vrednosti <- c(min100, min10, min11, min12, min13, min14)
-cairo_pdf("slike/min-box-office.pdf",family="Arial")
-barplot(letnice.vrednosti, names.arg = letnice.ime, xlab="LETNICE", ylab="MINIMALNI ZASLUŽEK", main="MINIMALNI ZASLUŽEK PO LETNICAH", cex.names=0.5, cex.axis=0.5, col=rainbow(6)) 
+#maximum+minimum+povprecje budgetov po letnicah
+Letnice <- c(2010, 2011, 2012, 2013, 2014)
+y1 <- c(maxb10, maxb11, maxb12, maxb13, maxb14)
+y2 <- c(minb10, minb11, minb12, minb13, minb14)
+y3 <- c(povprecjeb10, povprecjeb11, povprecjeb12, povprecjeb13, povprecjeb14)
+cairo_pdf("slike/budget.pdf",family="Arial")
+df <- data.frame(Letnice, y1, y2, y3)
+ggplot(df, aes(Letnice, y = Vrednosti, color = Legenda), title=) + 
+  geom_line(aes(y = y1, col = "maksimumi")) + 
+  geom_line(aes(y = y2, col = "minimumi")) +
+  geom_line(aes(y = y3, col = "povprečje")) +
+  scale_y_log10(labels = trans_format('log10', math_format(10^.x)))
 dev.off()
 #razmerje minimumov in maximumov - box office
 razmerje.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
 razmerje.vrednosti <- c(r100, r10, r11, r12, r13, r14)
 cairo_pdf("slike/razmerje-boxoffice.pdf",family="Arial")
 barplot(razmerje.vrednosti, names.arg = razmerje.ime, xlab="LETNICE", ylab="RAZMERJE", main="RAZMERJE MED MAX IN MIN ZASLUŽKOM PO LETNICAH", cex.names=0.5, cex.axis=0.5, col=rainbow(6))
-dev.off()
-#maximum budgetov po letnicah
-letnice.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
-letnice.vrednosti <- c(maxb100, maxb10, maxb11, maxb12, maxb13, maxb14)
-cairo_pdf("slike/max-budget.pdf",family="Arial")
-barplot(letnice.vrednosti, names.arg = letnice.ime, xlab="LETNICE", ylab="MAKSIMALNI PRORAČUN", main="MAKSIMALEN PRORAČUN PO LETNICAH", cex.names=0.5, cex.axis=0.5, col=rainbow(6)) 
-dev.off()
-#minimum budgetov po letnicah
-letnice.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
-letnice.vrednosti <- c(minb100, minb10, minb11, minb12, minb13, minb14)
-cairo_pdf("slike/min-budget.pdf",family="Arial")
-barplot(letnice.vrednosti, names.arg = letnice.ime, xlab="LETNICE", ylab="MINIMALNI PRORAČUN", main="MINIMALNI PRORAČUN PO LETNICAH", cex.names=0.5, cex.axis=0.5, col=rainbow(6)) 
 dev.off()
 #razmerje minimumov in maximumov - budget
 razmerje.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
