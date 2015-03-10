@@ -407,11 +407,11 @@ y2 <- c(minb10, minb11, minb12, minb13, minb14)
 y3 <- c(povprecjeb10, povprecjeb11, povprecjeb12, povprecjeb13, povprecjeb14)
 cairo_pdf("slike/budget.pdf",family="Arial")
 df <- data.frame(Letnice, y1, y2, y3)
-ggplot(df, aes(Letnice, y = Vrednosti, color = Legenda), title=) + 
+print(ggplot(df, aes(Letnice, y = Vrednosti, color = Legenda), title=) + 
   geom_line(aes(y = y1, col = "maksimumi")) + 
   geom_line(aes(y = y2, col = "minimumi")) +
   geom_line(aes(y = y3, col = "povprečje")) +
-  scale_y_log10(labels = trans_format('log10', math_format(10^.x)))
+  scale_y_log10(labels = trans_format('log10', math_format(10^.x))))
 dev.off()
 #razmerje minimumov in maximumov - box office
 razmerje.ime <- c("vseh casov", 2010, 2011, 2012, 2013, 2014)
